@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Eduarda Ferreira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pessego: #C47D5A;
+    --mogno: #5C3D2E;
+    --nude: #C4A898;
+    --petala: #FDF6F0;
+    --offwhite: #FAFAF8;
+  }
+
+  body {
+    background: var(--offwhite);
+    color: var(--mogno);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px 24px;
+  }
+
+  .container {
+    width: 100%; max-width: 420px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0;
+  }
+
+  /* PERFIL */
+  .perfil { text-align: center; margin-bottom: 36px; }
+  .avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--petala); border: 1.5px solid var(--pessego);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; color: var(--pessego);
+    margin: 0 auto 16px;
+  }
+  .perfil-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; color: var(--mogno);
+    margin-bottom: 4px;
+  }
+  .perfil-nome em { font-style: italic; color: var(--pessego); }
+  .perfil-cargo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--nude);
+    margin-bottom: 14px;
+  }
+  .perfil-bio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic; color: var(--nude);
+    line-height: 1.7;
+  }
+  .perfil-bio strong { color: var(--pessego); font-style: normal; font-weight: 400; }
+
+  /* LINKS */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+
+  .link-item {
+    display: block; width: 100%;
+    text-decoration: none;
+    padding: 18px 24px;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .link-item.principal {
+    background: var(--pessego);
+  }
+  .link-item.principal:hover { opacity: 0.9; }
+  .link-item.principal .link-label { color: var(--offwhite); }
+  .link-item.principal .link-sub { color: rgba(255,255,255,0.7); }
+
+  .link-item.secundario {
+    background: var(--petala);
+    border: 0.5px solid rgba(196,125,90,0.2);
+  }
+  .link-item.secundario:hover { border-color: var(--pessego); }
+  .link-item.secundario .link-label { color: var(--mogno); }
+  .link-item.secundario .link-sub { color: var(--nude); }
+
+  .link-inner { display: flex; justify-content: space-between; align-items: center; }
+  .link-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+  }
+  .link-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-style: italic;
+    margin-top: 2px;
+  }
+  .link-arrow { font-size: 14px; opacity: 0.6; }
+
+  /* MÉTODO TAG */
+  .metodo-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--pessego); margin: 28px 0 16px;
+    display: flex; align-items: center; gap: 12px;
+    width: 100%;
+  }
+  .metodo-tag::before, .metodo-tag::after {
+    content: ''; flex: 1; height: 0.5px; background: rgba(196,125,90,0.25);
+  }
+
+  /* FOOTER */
+  .footer-bio {
+    margin-top: 32px; text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 300; letter-spacing: 0.1em;
+    color: var(--nude);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="perfil">
+    <div class="avatar">MEF</div>
+    <h1 class="perfil-nome"><em>M.</em> Eduarda Ferreira</h1>
+    <p class="perfil-cargo">Estrategista de Posicionamento Digital</p>
+    <p class="perfil-bio">
+      "Você é bom no que faz.<br>
+      O mercado só precisa saber disso."<br><br>
+      Criadora do <strong>Método 3M™</strong>
+    </p>
+  </div>
+
+  <div class="links">
+
+    <a href="pagina-vendas.html#contato" class="link-item principal">
+      <div class="link-inner">
+        <div>
+          <div class="link-label">Quero começar o Método 3M™</div>
+          <div class="link-sub">Fale comigo · vagas limitadas</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="pagina-vendas.html" class="link-item secundario">
+      <div class="link-inner">
+        <div>
+          <div class="link-label">Página de vendas</div>
+          <div class="link-sub">Conheça o processo completo</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </div>
+    </a>
+
+    <div class="metodo-tag">Método 3M™</div>
+
+    <a href="pagina-vendas.html#metodo" class="link-item secundario">
+      <div class="link-inner">
+        <div>
+          <div class="link-label">M¹ · Mapeamento</div>
+          <div class="link-sub">Dias 1–30 · diagnóstico e identidade</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="pagina-vendas.html#metodo" class="link-item secundario">
+      <div class="link-inner">
+        <div>
+          <div class="link-label">M² · Mensagem</div>
+          <div class="link-sub">Dias 31–60 · posicionamento e voz</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="pagina-vendas.html#metodo" class="link-item secundario">
+      <div class="link-inner">
+        <div>
+          <div class="link-label">M³ · Mérito</div>
+          <div class="link-sub">Dias 61–90 · conteúdo e resultado</div>
+        </div>
+        <span class="link-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="footer-bio">Método 3M™ · Posicionamento Digital · 2025</p>
+
+</div>
+
+</body>
+</html>

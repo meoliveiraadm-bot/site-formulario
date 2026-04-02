@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método 3M™ · M. Eduarda Ferreira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --pessego: #C47D5A;
+    --mogno: #5C3D2E;
+    --nude: #C4A898;
+    --petala: #FDF6F0;
+    --offwhite: #FAFAF8;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--offwhite); color: var(--mogno);
+    font-family: 'DM Sans', sans-serif; font-weight: 300;
+    line-height: 1.7; overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,250,248,0.92); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(196,125,90,0.12);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; letter-spacing: 0.1em; color: var(--mogno); text-decoration: none; }
+  .nav-logo em { font-style: italic; color: var(--pessego); }
+  .nav-cta { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--offwhite); background: var(--pessego); padding: 10px 24px; text-decoration: none; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; max-width: 900px; margin: 0 auto; position: relative; }
+  .hero-eyebrow { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--pessego); margin-bottom: 24px; display: flex; align-items: center; gap: 14px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--pessego); }
+  .hero-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 80px); font-weight: 300; line-height: 1.08; color: var(--mogno); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-titulo em { font-style: italic; color: var(--pessego); }
+  .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.2vw, 24px); font-weight: 300; font-style: italic; color: var(--nude); line-height: 1.7; max-width: 560px; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .hero-cta { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--offwhite); background: var(--pessego); padding: 18px 40px; text-decoration: none; transition: opacity 0.2s; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+  .hero-cta:hover { opacity: 0.88; }
+  .hero-scroll { position: absolute; bottom: 48px; left: 48px; font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nude); display: flex; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+  .hero-scroll::after { content: ''; display: block; width: 40px; height: 0.5px; background: var(--nude); }
+
+  /* SEÇÕES */
+  section { padding: 100px 48px; max-width: 900px; margin: 0 auto; }
+  .section-eyebrow { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--pessego); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-eyebrow::before { content: ''; display: block; width: 24px; height: 0.5px; background: var(--pessego); }
+  .section-titulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.15; color: var(--mogno); margin-bottom: 24px; }
+  .section-titulo em { font-style: italic; color: var(--pessego); }
+  .section-texto { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; font-style: italic; color: var(--nude); line-height: 1.8; max-width: 580px; }
+
+  /* DOR */
+  .dor { background: var(--petala); padding: 100px 0; }
+  .dor-inner { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+  .dor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+  .dor-item { background: var(--offwhite); padding: 40px 32px; border-top: 2px solid var(--pessego); }
+  .dor-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--pessego); opacity: 0.3; line-height: 1; margin-bottom: 16px; }
+  .dor-texto { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; font-style: italic; color: var(--mogno); line-height: 1.6; }
+
+  /* MÉTODO */
+  .metodo-linha { height: 0.5px; background: rgba(196,125,90,0.2); margin: 40px 0; }
+  .metodo-etapa { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 48px 0; border-bottom: 0.5px solid rgba(196,125,90,0.15); }
+  .metodo-etapa:last-child { border-bottom: none; }
+  .etapa-codigo { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; font-style: italic; color: var(--pessego); line-height: 1; }
+  .etapa-nome { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--mogno); margin-bottom: 8px; line-height: 1.2; }
+  .etapa-periodo { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pessego); margin-bottom: 16px; display: inline-block; padding: 4px 12px; border: 0.5px solid var(--pessego); }
+  .etapa-desc { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; font-style: italic; color: var(--nude); line-height: 1.7; margin-bottom: 20px; }
+  .etapa-itens { list-style: none; }
+  .etapa-itens li { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--mogno); padding: 8px 0; border-bottom: 0.5px solid rgba(196,125,90,0.1); display: flex; align-items: center; gap: 12px; }
+  .etapa-itens li::before { content: ''; display: block; width: 6px; height: 0.5px; background: var(--pessego); flex-shrink: 0; }
+
+  /* ENTREGÁVEIS */
+  .entregaveis { background: var(--mogno); padding: 100px 0; }
+  .entregaveis-inner { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+  .entregaveis .section-titulo { color: var(--offwhite); }
+  .entregaveis .section-texto { color: var(--nude); }
+  .entregaveis .section-eyebrow { color: rgba(196,125,90,0.8); }
+  .entregaveis .section-eyebrow::before { background: rgba(196,125,90,0.8); }
+  .ent-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 48px; }
+  .ent-item { background: rgba(255,255,255,0.04); padding: 32px 28px; border-left: 2px solid var(--pessego); }
+  .ent-nome { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--offwhite); margin-bottom: 8px; }
+  .ent-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--nude); line-height: 1.6; }
+
+  /* PREÇOS */
+  .precos { padding: 100px 48px; max-width: 900px; margin: 0 auto; }
+  .precos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+
+  .preco-card { padding: 40px 32px; background: var(--petala); position: relative; border-top: 2px solid transparent; }
+  .preco-card.destaque { background: var(--offwhite); border-top: 2px solid var(--pessego); }
+
+  .preco-badge { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pessego); margin-bottom: 16px; display: block; }
+  .preco-nome { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--mogno); margin-bottom: 8px; }
+  .preco-valor { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--mogno); line-height: 1; margin-bottom: 4px; }
+  .preco-periodo { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 300; color: var(--nude); margin-bottom: 24px; letter-spacing: 0.06em; }
+  .preco-desc { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--nude); line-height: 1.6; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 0.5px solid rgba(196,125,90,0.15); }
+  .preco-itens { list-style: none; margin-bottom: 32px; }
+  .preco-itens li { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--mogno); padding: 8px 0; border-bottom: 0.5px solid rgba(196,125,90,0.1); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .preco-itens li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--pessego); flex-shrink: 0; margin-top: 6px; }
+
+  .preco-nota-desconto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-style: italic; color: var(--pessego);
+    background: rgba(196,125,90,0.08);
+    padding: 10px 14px; margin-bottom: 20px;
+    border-left: 2px solid var(--pessego);
+    line-height: 1.5;
+  }
+
+  .preco-cta { display: block; width: 100%; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--offwhite); background: var(--pessego); padding: 16px; text-align: center; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
+  .preco-cta:hover { opacity: 0.88; }
+  .preco-cta.outline { background: transparent; color: var(--pessego); border: 0.5px solid var(--pessego); }
+  .preco-cta.outline:hover { background: rgba(196,125,90,0.06); }
+
+  /* FORMULÁRIO */
+  .form-section { background: var(--petala); padding: 100px 0; }
+  .form-inner { max-width: 700px; margin: 0 auto; padding: 0 48px; }
+  form { margin-top: 48px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pessego); margin-bottom: 10px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 16px 20px; background: var(--offwhite); border: 0.5px solid rgba(196,125,90,0.25); font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: var(--mogno); outline: none; appearance: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--pessego); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--nude); opacity: 0.6; font-style: italic; }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+  .form-submit { width: 100%; padding: 20px; background: var(--pessego); color: var(--offwhite); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.2s; margin-top: 8px; }
+  .form-submit:hover { opacity: 0.88; }
+  .form-nota { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--nude); text-align: center; margin-top: 20px; }
+  .form-success { display: none; text-align: center; padding: 48px 0; }
+  .form-success-titulo { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; font-style: italic; color: var(--mogno); margin-bottom: 12px; }
+  .form-success-sub { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--nude); }
+
+  /* FOOTER */
+  footer { background: var(--mogno); padding: 48px; text-align: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--offwhite); margin-bottom: 8px; }
+  .footer-logo em { font-style: italic; color: var(--pessego); }
+  .footer-sub { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--nude); }
+
+  /* BOTÃO FLUTUANTE INSTAGRAM */
+  .float-insta {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--pessego); color: var(--offwhite);
+    padding: 14px 20px; text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 24px rgba(196,125,90,0.25);
+  }
+  .float-insta:hover { opacity: 0.88; }
+  .float-insta svg { width: 16px; height: 16px; fill: var(--offwhite); flex-shrink: 0; }
+
+  .form-ou { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: var(--nude); margin: 24px 0; display: flex; align-items: center; gap: 16px; }
+  .form-ou::before, .form-ou::after { content: ''; flex: 1; height: 0.5px; background: rgba(196,125,90,0.2); }
+  .btn-direct { display: block; width: 100%; padding: 18px; background: transparent; border: 0.5px solid var(--pessego); color: var(--pessego); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .btn-direct:hover { background: rgba(196,125,90,0.06); }
+  .btn-direct svg { width: 16px; height: 16px; fill: var(--pessego); flex-shrink: 0; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 720px) {
+    nav, .hero, section, .dor-inner, .entregaveis-inner, .form-inner, .precos { padding-left: 24px; padding-right: 24px; }
+    .hero { padding-top: 100px; }
+    .dor-grid, .precos-grid { grid-template-columns: 1fr; }
+    .ent-grid { grid-template-columns: 1fr; }
+    .metodo-etapa { grid-template-columns: 60px 1fr; gap: 20px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="https://ig.me/m/meduarda.estrategia" target="_blank" class="float-insta">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  Direct
+</a>
+
+<nav>
+  <a href="#" class="nav-logo"><em>M.</em> Eduarda Ferreira</a>
+  <a href="#contato" class="nav-cta">Quero começar</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Método 3M™ · Posicionamento Digital</p>
+  <h1 class="hero-titulo">Você é bom<br>no que faz.<br><em>O mercado precisa<br>saber disso.</em></h1>
+  <p class="hero-sub">"Transformo especialistas invisíveis em referências digitais — com método, não com sorte."</p>
+  <a href="#contato" class="hero-cta">Quero ser visto</a>
+  <span class="hero-scroll">Role para descobrir</span>
+</div>
+
+<!-- DOR -->
+<div class="dor">
+  <div class="dor-inner">
+    <p class="section-eyebrow">O problema</p>
+    <h2 class="section-titulo">Você reconhece<br><em>alguma dessas situações?</em></h2>
+    <div class="dor-grid">
+      <div class="dor-item">
+        <div class="dor-num">01</div>
+        <p class="dor-texto">"Perco clientes para concorrentes que fazem menos que eu, mas aparecem mais."</p>
+      </div>
+      <div class="dor-item">
+        <div class="dor-num">02</div>
+        <p class="dor-texto">"Sei que sou bom no que faço. Mas não sei como mostrar isso de forma profissional."</p>
+      </div>
+      <div class="dor-item">
+        <div class="dor-num">03</div>
+        <p class="dor-texto">"Já tentei postar nas redes, mas sem estratégia. Nada funciona como deveria."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MÉTODO -->
+<section id="metodo">
+  <p class="section-eyebrow">A solução</p>
+  <h2 class="section-titulo">O Método 3M™</h2>
+  <p class="section-texto">"Um processo de 90 dias — do diagnóstico ao reconhecimento. Cada etapa tem lógica, prazo e entregáveis concretos."</p>
+  <div class="metodo-linha"></div>
+  <div class="metodo-etapa">
+    <div class="etapa-codigo">M¹</div>
+    <div>
+      <h3 class="etapa-nome">Mapeamento</h3>
+      <span class="etapa-periodo">Dias 1–30</span>
+      <p class="etapa-desc">"Antes de qualquer estratégia, entendemos quem você é de verdade — seus diferenciais reais e onde o mercado não está te enxergando."</p>
+      <ul class="etapa-itens">
+        <li>Questionário de diagnóstico profundo</li>
+        <li>Análise do perfil digital atual</li>
+        <li>Documento de mapeamento estratégico</li>
+      </ul>
+    </div>
+  </div>
+  <div class="metodo-etapa">
+    <div class="etapa-codigo">M²</div>
+    <div>
+      <h3 class="etapa-nome">Mensagem</h3>
+      <span class="etapa-periodo">Dias 31–60</span>
+      <p class="etapa-desc">"Com o mapeamento em mãos, construímos o que você diz, como diz e para quem. Posicionamento traduzido em linguagem que o mercado entende."</p>
+      <ul class="etapa-itens">
+        <li>Questionário de posicionamento</li>
+        <li>Sessão estratégica ao vivo</li>
+        <li>Documento de mensagem e posicionamento</li>
+      </ul>
+    </div>
+  </div>
+  <div class="metodo-etapa">
+    <div class="etapa-codigo">M³</div>
+    <div>
+      <h3 class="etapa-nome">Mérito</h3>
+      <span class="etapa-periodo">Dias 61–90</span>
+      <p class="etapa-desc">"Colocamos em prática tudo que foi construído. Conteúdo com estratégia e um manual para você manter a presença com autonomia."</p>
+      <ul class="etapa-itens">
+        <li>Roteiros e legendas de conteúdo</li>
+        <li>Calendário editorial</li>
+        <li>Relatório de resultado</li>
+        <li>Manual de presença</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGÁVEIS -->
+<div class="entregaveis">
+  <div class="entregaveis-inner">
+    <p class="section-eyebrow">O que você recebe</p>
+    <h2 class="section-titulo">7 entregáveis.<br><em>Uma transformação completa.</em></h2>
+    <div class="ent-grid">
+      <div class="ent-item"><div class="ent-nome">Documento de mapeamento</div><div class="ent-desc">Diagnóstico completo, diferenciais mapeados e direção estratégica.</div></div>
+      <div class="ent-item"><div class="ent-nome">Sessão estratégica ao vivo</div><div class="ent-desc">A única etapa com sessão em tempo real — construímos juntos.</div></div>
+      <div class="ent-item"><div class="ent-nome">Documento de posicionamento</div><div class="ent-desc">Tom de voz, frase de autoridade, pilares de conteúdo e bio reformulada.</div></div>
+      <div class="ent-item"><div class="ent-nome">Roteiros e legendas</div><div class="ent-desc">Conteúdo produzido com base no seu posicionamento real.</div></div>
+      <div class="ent-item"><div class="ent-nome">Calendário editorial</div><div class="ent-desc">Planejamento dos 30 dias finais e modelo para continuar depois.</div></div>
+      <div class="ent-item"><div class="ent-nome">Relatório de resultado</div><div class="ent-desc">Comparativo antes e depois — documentado para você guardar.</div></div>
+      <div class="ent-item" style="grid-column:1/-1;"><div class="ent-nome">Manual de presença</div><div class="ent-desc">O guia que garante sua autonomia após o processo. Para você não depender de ninguém para continuar crescendo.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PREÇOS -->
+<div class="precos" id="precos">
+  <p class="section-eyebrow">Investimento</p>
+  <h2 class="section-titulo">Escolha o seu<br><em>ponto de entrada.</em></h2>
+  <p class="section-texto">"Há um caminho para cada momento. O diagnóstico é o primeiro passo — e ele conta."</p>
+
+  <div class="precos-grid">
+
+    <!-- DIAGNÓSTICO -->
+    <div class="preco-card">
+      <span class="preco-badge">Entrada</span>
+      <div class="preco-nome">Diagnóstico 3M</div>
+      <div class="preco-valor">R$ 600</div>
+      <div class="preco-periodo">Sessão única · entrega em 7 dias</div>
+      <p class="preco-desc">"Para quem quer entender onde está antes de se comprometer com o processo completo."</p>
+      <ul class="preco-itens">
+        <li>Questionário de diagnóstico profundo</li>
+        <li>Análise do perfil digital atual</li>
+        <li>Documento de mapeamento estratégico</li>
+      </ul>
+      <div class="preco-nota-desconto">
+        "Se decidir fechar o Método 3M Completo em até 15 dias, os R$ 600 são abatidos do valor total."
+      </div>
+      <a href="#contato" class="preco-cta outline">Quero começar pelo diagnóstico</a>
+    </div>
+
+    <!-- MÉTODO COMPLETO -->
+    <div class="preco-card destaque">
+      <span class="preco-badge">Principal · mais escolhido</span>
+      <div class="preco-nome">Método 3M Completo</div>
+      <div class="preco-valor">R$ 3.500</div>
+      <div class="preco-periodo">90 dias · até 3× sem juros</div>
+      <p class="preco-desc">"Os três Ms. Do diagnóstico ao mérito — processo completo com entregáveis em cada etapa."</p>
+      <ul class="preco-itens">
+        <li>Diagnóstico 3M já incluso</li>
+        <li>Sessão estratégica ao vivo</li>
+        <li>Documento de posicionamento completo</li>
+        <li>Roteiros e legendas de conteúdo</li>
+        <li>Calendário editorial</li>
+        <li>Relatório de resultado</li>
+        <li>Manual de presença</li>
+      </ul>
+      <a href="#contato" class="preco-cta">Quero o processo completo</a>
+    </div>
+
+    <!-- ACOMPANHAMENTO -->
+    <div class="preco-card">
+      <span class="preco-badge">Premium</span>
+      <div class="preco-nome">3M + Acompanhamento</div>
+      <div class="preco-valor">R$ 4.900</div>
+      <div class="preco-periodo">120 dias · até 4× sem juros</div>
+      <p class="preco-desc">"Método completo com 30 dias extras de acompanhamento para quem quer suporte na fase de execução."</p>
+      <ul class="preco-itens">
+        <li>Tudo do Método 3M Completo</li>
+        <li>30 dias de acompanhamento pós-processo</li>
+        <li>2 revisões de conteúdo no mês extra</li>
+        <li>Ajustes de posicionamento se necessário</li>
+      </ul>
+      <a href="#contato" class="preco-cta outline">Quero o acompanhamento</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FORMULÁRIO -->
+<div class="form-section" id="contato">
+  <div class="form-inner">
+    <p class="section-eyebrow">Primeiro passo</p>
+    <h2 class="section-titulo">Vamos <em>conversar?</em></h2>
+    <p class="section-texto">"Preencha abaixo. Entrarei em contato em até 48 horas — pessoalmente."</p>
+
+    <form id="form-contato" action="https://formspree.io/f/mvzvqbrn" method="POST">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Seu nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Como posso te chamar?" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+        </div>
+        <div class="form-group">
+          <label for="instagram">@ do Instagram</label>
+          <input type="text" id="instagram" name="instagram" placeholder="@seuperfil">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="profissao">Profissão / área de atuação</label>
+        <input type="text" id="profissao" name="profissao" placeholder="Ex: Médica, advogado, coach..." required>
+      </div>
+
+      <div class="form-group">
+        <label for="pacote">Qual opção te interessa?</label>
+        <select id="pacote" name="pacote" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="diagnostico">Diagnóstico 3M · R$ 600</option>
+          <option value="completo">Método 3M Completo · R$ 3.500</option>
+          <option value="acompanhamento">3M + Acompanhamento · R$ 4.900</option>
+          <option value="duvida">Ainda tenho dúvidas — quero conversar</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="situacao">Qual é a sua situação hoje?</label>
+        <select id="situacao" name="situacao">
+          <option value="" disabled selected>Selecione a que mais se aproxima</option>
+          <option>Sou bom no que faço mas sou invisível digitalmente</option>
+          <option>Já tentei postar mas não tenho estratégia</option>
+          <option>Estou começando e quero fazer certo desde o início</option>
+          <option>Perco clientes para concorrentes que aparecem mais</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mensagem">Conta um pouco mais sobre você (opcional)</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Quanto tempo está na área, o que quer mudar, qualquer detalhe que achar relevante..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Quero começar o Método 3M™</button>
+      <p class="form-nota">"Responderei pessoalmente. Sem automação, sem roteiro."</p>
+
+      <div class="form-ou">ou prefere falar direto?</div>
+      <a href="https://ig.me/m/meduarda.estrategia" target="_blank" class="btn-direct">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Falar no Direct — @meduarda.estrategia
+      </a>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <div class="form-success-titulo">Mensagem recebida.</div>
+      <div class="form-success-sub">Entrarei em contato em até 48 horas. Obrigada pela confiança.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><em>M.</em> Eduarda Ferreira</div>
+  <div class="footer-sub">Estrategista de Posicionamento Digital · Método 3M™</div>
+</footer>
+
+<script>
+  const form = document.getElementById('form-contato');
+  const success = document.getElementById('form-success');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'Erro ao enviar. Tente novamente.';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Erro ao enviar. Tente novamente.';
+      btn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
